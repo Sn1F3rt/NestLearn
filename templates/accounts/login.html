@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block state-login %}
+active
+{% endblock state-login %}
+{% block title  %}
+    NestLearn | Login
+{% endblock title  %}
+
+{% block content %}
+
+<div class="card flat-card-soft">
+  <div class="card-body">
+  	<img alt="favicon" src="{% static 'img/favicon.svg' %}" class="icon">
+      <br>
+      <div style="text-align: center"><h4>NestLearn : Login</h4></div>
+      <hr>
+    <form method="POST">
+    	{% csrf_token %}
+    	{{ form.as_p }}
+    	<br><br>
+        <input type="submit" value='Login' class="btn btn-outline-success btn-group-vertical">
+      <a href="{% url 'accounts:register' %}" style="margin-left: 80px; text-decoration: none;">Haven't joined yet?</a>
+    </form>
+  </div>
+</div><br>
+{% endblock content %}

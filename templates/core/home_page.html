@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Home | NestLearn
+{% endblock title %}
+{% block state-home %}active{% endblock state-home %}
+
+{% block content %}
+<br><br><br>
+
+{% load render_home_page %}
+<div class="container-lg">
+    {% render_home_page as home_page_text %}
+    {{ home_page_text|safe }}
+</div>
+
+
+<br>
+{% endblock content %}

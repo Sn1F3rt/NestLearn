@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block state-new %}active{% endblock state-new %}
+{% block title %}
+    Update Question '{{ object }}' - NestLearn
+{% endblock title %}
+
+{% block content %}
+
+<br><br><br><br><br>
+
+
+<div class="container">
+	<h3>Update Question '{{ object }}'</h3>
+	<hr><br>
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Update" class="btn btn-lg btn-success">
+		<br><br>
+	</form>
+</div>
+{% endblock content %}

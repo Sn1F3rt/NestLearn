@@ -1,0 +1,135 @@
+/* Basic Body Styling*/
+body {
+	font-family: 'Poppinsx', san-serif, sans-serif;
+	font-weight: 400;
+}
+
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+
+/* Ripple Effect */
+.ripple{
+	position:relative;
+	overflow:hidden;
+	transform:translate3d(0,0,0)
+}
+.ripple:after{
+		content:"";
+		display:block;
+		position:absolute;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		pointer-events:none;
+		background-image:radial-gradient(circle,#000 10%,transparent 10.01%);
+		background-repeat:no-repeat;
+		background-position:50%;
+		transform:scale(10,10);
+		opacity:0;
+		transition:transform .5s,opacity 1s
+}
+.ripple:active:after{
+	transform:scale(0,0);
+	opacity:.2;
+	transition:0s;
+}
+
+
+
+
+
+/* Other Styling */
+.question:hover {
+	box-shadow: 0 0 30px 4px rgba(0, 0, 0, 0.4);
+  transform: translate3d(0px, -10px, 0px);
+  transition: 250ms ease;
+}
+.icon {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+}
+.se-pre-con {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(load.gif) center no-repeat #fff;
+}
+
+/* Inputs */
+#id_title, #id_question, #id_related_tag, #id_answer {
+	border: none;
+	outline: none;
+	width: 100%;
+	border-bottom: 1px solid orchid;
+	margin-bottom: 40px;
+}
+
+
+
+/* Cards */
+.flat-card-soft {
+	width: 25rem;
+	padding: 10px;
+	margin: 90px auto auto;
+	box-shadow: 0 0 50px 2px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	border: none;
+}
+.flat-card-soft-no-center {
+	width: 25rem; 
+	padding: 10px; 
+	box-shadow: 0 0 25px 2px rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	border: none;
+}
+.flat-card-light-soft-no-center {
+	width: 25rem; 
+	padding: 10px; 
+	box-shadow: 0 0 25px 2px rgba(0, 0, 0, 0.17);
+	border-radius: 10px;
+	border: none;
+}
+
+/* Text Styling */
+#id_username, #id_password, #id_email, #id_password1, #id_password2 {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid orangered;
+	outline: none;
+}
+.desc {
+	font-weight: 300;
+	text-align: center;
+}
+.content {
+	margin-top: 10px;
+}
+.centered  {
+	text-align: center;
+}
+
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

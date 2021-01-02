@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block state-search %}
+active
+{% endblock state-search %}
+{% block title %}
+    Search | NestLearn
+{% endblock title %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+	<form method="GET">
+		<div class="input-group flex-nowrap">
+		  <input name="q" id="q" type="text" class="form-control" placeholder="Question Tag" aria-label="Username" aria-describedby="addon-wrapping">
+			<input type="submit" value="Search" style="border-radius: 0;" class="btn btn-sm btn-success">
+		</div>
+	</form><br><br>
+	{% for result in results %}
+		<div class="row">
+			<div class="col-4">
+				<a href="{% url 'core:single-question' pk=result.pk %}" class="question-card-link" style="color: #212529; text-decoration: none;">
+					<div class="container">
+						<div class="card question flat-card-soft-no-center ripple" style="width: 18rem;">
+						  <div class="card-body">
+						    <h5 class="card-title">{{ result }}</h5>
+						    <h6  class="card-subtitle mb-2 text-muted">{{ result.tag }}</h6>
+						    <hr>
+						    {{ result.date }}<br>
+						    {{ result.user }}
+						  </div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	{% empty %}
+	<div class="card flat-card-soft ripple" style="width: 18rem;">
+	  <div class="card-body">
+	    <h5 class="card-title">No Questions With This Tag!</h5>
+	    <h6  class="card-subtitle mb-2 text-muted">Post A New Question!</h6>
+	  </div>
+	{% endfor %}
+    </div>
+{% endblock content %}

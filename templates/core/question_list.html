@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block state-questions %}active{% endblock state-questions %}
+{% block title %}
+Questions | NestLearn
+{% endblock title %}
+
+{% block content %}
+
+<br><br><br><br>
+
+<div class="container">
+    <div style="text-align: center"><h2>Exam</h2></div>
+
+    <hr>
+
+	<div class="row">
+
+		{% for object in object_list %}
+		{% if object.tag == "exam" %}
+
+		<div class="col-4">
+			<a href="{% url 'core:single-question' pk=object.pk %}" class="question-card-link" style="color: #212529; text-decoration: none;">
+				<div class="container">
+					<div class="card question flat-card-soft-no-center ripple" style="width: 18rem;">
+					  <div class="card-body">
+					    <h5 class="card-title">{{ object }}</h5>
+					    <h6  class="card-subtitle mb-2 text-muted">{{ object.tag }}</h6>
+
+					    <hr>
+
+					    {{ object.date }}
+                          <br>
+					    {{ object.user }}
+					  </div>
+					</div>
+                </div></a>
+		</div>
+		{%endif%}
+		{%endfor%}
+	</div>
+
+	<hr>
+
+	<div style="text-align: center"><h2>General</h2></div>
+
+    <hr>
+
+	<div class="row">
+		{% for object in object_list %}
+		{% if object.tag != "exam" %}
+		<div class="col-4">
+			<a href="{% url 'core:single-question' pk=object.pk %}" class="question-card-link" style="color: #212529; text-decoration: none;">
+				<div class="container">
+					<div class="card question flat-card-soft-no-center ripple" style="width: 18rem;">
+					  <div class="card-body">
+					    <h5 class="card-title">{{ object }}</h5>
+					    <h6  class="card-subtitle mb-2 text-muted">{{ object.tag }}</h6>
+					    <hr>
+					    {{ object.date }}
+                          <br>
+					    {{ object.user }}
+					  </div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		{% endif %}
+		{% empty %}
+
+		<div class="card flat-card-soft ripple" style="width: 18rem;">
+		  <div class="card-body">
+		    <h5 class="card-title">No Questions Yet!</h5>
+		    <a href="{% url 'core:all-questions' %}"><h6 class="card-subtitle mb-2 text-muted">Post a Question</h6></a>
+		  </div>
+		{% endfor %}
+	    </div>
+{% endblock content %}

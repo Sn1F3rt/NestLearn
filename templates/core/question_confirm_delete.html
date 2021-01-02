@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block state-questions %}active{% endblock state-questions %}
+{% block title %}
+    Delete '{{ object }}' - NestLearn
+{% endblock title %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+	<h3>Are you sure you want to delete '{{ object }}'?  This action is irreversible.</h3><br>
+	<form method="POST">
+		{% csrf_token %}
+		<input type="submit" value="Delete" class="btn btn-sm btn-outline-danger" style="margin-right: 10px;">
+		<input type="submit" value="Nope" autofocus class="btn btn btn-primary">
+	</form>
+</div>
+{% endblock content %}
