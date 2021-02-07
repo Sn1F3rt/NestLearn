@@ -62,4 +62,4 @@ python3 manage.py runserver
 
 [Apache-2.0 License](LICENSE)
 
-Copyright &copy; 2020 Sayan Bhattacharyya
+Copyright &copy; 2020-21 Sayan Bhattacharyya
