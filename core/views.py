@@ -84,4 +84,7 @@ def question_search(request):
     if query:
         queryset = queryset.filter(tag__icontains=query)
 
+    else:
+        queryset = []
+
     return render(request, 'core/question_search.html', {'results': queryset})
