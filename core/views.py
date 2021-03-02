@@ -39,8 +39,8 @@ class QuestionCreateView(mixins.LoginRequiredMixin, generic.CreateView):
         self.object.user = self.request.user
 
         if self.object.user.profile.type == 'student' and \
-                BeautifulSoup(str(form), features='lxml').find("input", {"id": "id_tag"})["value"] == 'exam':
-            error = 'Only teachers cam create questions tagged with "exam"!'
+                BeautifulSoup(str(form), features='lxml').find("input", {"id": "id_tag"})["value"].lower() == 'exam':
+            error = 'Only teachers can create questions tagged with "exam"!'
             return HttpResponse(error, status=403)
 
         self.object.save()
