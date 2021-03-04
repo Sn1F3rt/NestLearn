@@ -21,7 +21,7 @@
 	<small>Tagged: {{ object.tag }}</small>
 	<hr>
 	{% if object.user == user %}
-	{% if object.tag != exam %}
+	{% if object.tag != 'exam' %}
 	<a href="{% url 'core:edit-question' pk=object.pk %}" class="btn btn btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 	<a href="{% url 'core:delete-question' pk=object.pk %}" class="btn btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
 	{% endif %}
@@ -34,7 +34,8 @@
 		{% for answer in answer_list %}
 			{% if answer.question == object %}
 				{% if answer.question.tag == "exam" %}
-					<div class="card flat-card-light-soft-no-center ripple" style="width: 100%;">
+                    {% if answer.user == user %}
+                    <div class="card flat-card-light-soft-no-center ripple" style="width: 100%;">
 						<div class="card-body">
 							<h6  class="card-subtitle mb-2 text-muted">By: {{ answer.user }}</h6>
 							<h6  class="card-subtitle mb-2 text-muted">At: {{ answer.date }}</h6>
@@ -42,10 +43,11 @@
 							{% if answer.user == user %}
 								<a href="{% url 'core:edit-answer' pk=answer.pk %}" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 							{% endif %}
-						</div>
+                    	</div>
 					</div>
                     <br>
 				{% endif %}
+            {% endif %}
 
 
 				{% if answer.question.tag != "exam" %}
