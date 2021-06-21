@@ -34,7 +34,7 @@
 		{% for answer in answer_list %}
 			{% if answer.question == object %}
 				{% if answer.question.tag == "exam" %}
-                    {% if answer.user == user %}
+                    {% if answer.user == user or user.profile.type == 'teacher' %}
                     <div class="card flat-card-light-soft-no-center ripple" style="width: 100%;">
 						<div class="card-body">
 							<h6  class="card-subtitle mb-2 text-muted">By: {{ answer.user }}</h6>
